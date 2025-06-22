@@ -87,22 +87,24 @@ function Modal_Doctores({
       return false;
     }
 
-    if (!formData.categorias || formData.categorias.length === 0) {
+    if (!isEditing && (!formData.categorias || formData.categorias.length === 0)) {
       Swal.fire('Categorías requeridas', 'Seleccione al menos una categoría.', 'warning');
       return false;
     }
+
 
     return true;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (!validarDatos()) return;
 
     try {
       setError('');
       // Envía el formData al componente padre
-      onSubmit(formData); // sin hacer fetch aquí
+      onSubmit();
       onHide();
     } catch (error) {
       console.error('Error en Modal:', error);
@@ -163,47 +165,50 @@ function Modal_Doctores({
               </Form.Select>
             </Col>
           </Row>
+
+          <Row className="mb-2">
+            <Col>
+              <Form.Label>Contraseña:</Form.Label>
+              <Form.Control
+                name="password"
+                type="password"
+                value={formData.password || ''}
+                onChange={handleChange}
+                required
+              />
+            </Col>
+            <Col>
+              <Form.Label>Confirmar Contraseña:</Form.Label>
+              <Form.Control
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+            </Col>
+          </Row>
+
           {!isEditing && (
             <Row className="mb-2">
               <Col>
-                <Form.Label>Contraseña:</Form.Label>
-                <Form.Control
-                  name="password"
-                  type="password"
-                  value={formData.password || ''}
-                  onChange={handleChange}
-                  required
-                />
-              </Col>
-              <Col>
-                <Form.Label>Confirmar Contraseña:</Form.Label>
-                <Form.Control
-                  type="password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  required
-                />
+                <Form.Label>Categorías:</Form.Label>
+                <div className="d-flex flex-wrap">
+                  {categorias.map(cat => (
+                    <Form.Check
+                      key={cat.id}
+                      type="checkbox"
+                      label={cat.nombre}
+                      checked={formData.categorias?.includes(cat.id) || false}
+                      onChange={() => handleCheckboxChange(cat.id)}
+                      className="me-3"
+                    />
+                  ))}
+                </div>
               </Col>
             </Row>
           )}
 
-          <Row className="mb-2">
-            <Col>
-              <Form.Label>Categorías:</Form.Label>
-              <div className="d-flex flex-wrap">
-                {categorias.map(cat => (
-                  <Form.Check
-                    key={cat.id}
-                    type="checkbox"
-                    label={cat.nombre}
-                    checked={formData.categorias?.includes(cat.id) || false}
-                    onChange={() => handleCheckboxChange(cat.id)}
-                    className="me-3"
-                  />
-                ))}
-              </div>
-            </Col>
-          </Row>
+
 
           <div className="text-center mt-3">
             <Button type="submit" variant="primary" className="w-100">

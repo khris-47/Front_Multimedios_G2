@@ -5,6 +5,12 @@ import Index from '../pages/principales/Index'
 import Login from '../pages/principales/Login'
 import Mi_perfil from '../pages/principales/Mi_perfil'
 import Doctores from '../pages/registros/Doctores'
+import Categorias from '../pages/registros/Categorias'
+import Lista_Usuarios from '../pages/registros/Lista_Usuarios'
+import Auditoria_Citas from '../pages/registros/Auditoria_Citas'
+import Auditoria_Doctores from '../pages/registros/Auditoria_Doctores'
+import Citas_Espera from '../pages/registros/Citas_Espera'
+import Citas_Aceptadas from '../pages/registros/Citas_Aceptadas'
 
 
 function Routing() {
@@ -16,7 +22,13 @@ function Routing() {
                     <Route path='/login' element={<Login/>}></Route>
                     <Route path='/perfil' element={<Mi_perfil/>}></Route>
                     <Route path='/doctores' element={<Doctores/>}></Route>
-                
+                    <Route path='/categorias' element={<Categorias/>}></Route>
+                    <Route path='/list_usuarios' element={<Lista_Usuarios/>}></Route>
+                    <Route path='/aud_citas' element={<Auditoria_Citas/>}></Route>
+                    <Route path='/aud_doctores' element={<Auditoria_Doctores/>}></Route>
+                    <Route path='/citas_espera' element={<Citas_Espera/>}></Route>
+                    <Route path='/citas_aceptada' element={<Citas_Aceptadas/>}></Route>
+
             </Routes>
         </Router>
     )

@@ -21,6 +21,20 @@ function Doctores() {
         departamento_id: ''
     });
 
+    const cerrarModal = () => {
+        setShowModal(false);
+        setIsEditing(false);
+        setFormData({
+            nombre: '',
+            telefono: '',
+            email: '',
+            password: '',
+            id_rol: 2,
+            departamento_id: ''
+        });
+    };
+
+
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
@@ -38,10 +52,26 @@ function Doctores() {
     }, []);
 
     const handleEdit = (doctor) => {
+        setIsEditing(true);
         setFormData(doctor);
         setEditId(doctor.id);
-        setIsEditing(true);
         setShowModal(true);
+    };
+
+    const handleUpdate = async () => {
+        try {
+            const doctorActualizado = {
+                ...formData,
+                id: editId,
+            };
+            await Doctores_Services.actualizarDoctor(editId, doctorActualizado);
+            Swal.fire('¡Éxito!', 'Doctor actualizado correctamente.', 'success');
+            setShowModal(false);
+            Doctores_Services.obtenerDoctores(); // refresca la tabla
+        } catch (error) {
+            console.error("Error al actualizar doctor:", error);
+            Swal.fire('Error', 'No se pudo actualizar el doctor.', 'error');
+        }
     };
 
     const handleRegister = async (formData) => {
@@ -175,16 +205,14 @@ function Doctores() {
 
             <Modal_Doctores
                 show={showModal}
-                onHide={() => {
-                    setShowModal(false);
-                    setIsEditing(false);
-                    setEditId(null);
-                }}
-                onSubmit={handleRegister}
+                onHide={cerrarModal}
+                onSubmit={isEditing ? handleUpdate : handleRegister}
                 formData={formData}
                 setFormData={setFormData}
                 isEditing={isEditing}
             />
+
+
         </div>
     );
 }

@@ -84,7 +84,7 @@ const Navbar = () => {
                                     data-bs-toggle="dropdown"
                                     aria-expanded="false"
                                 >
-                                    Administracion
+                                    Perfil
                                 </a>
                                 <ul className="dropdown-menu" aria-labelledby="perfilDropdown">
                                     <li className="nav-item">
@@ -103,7 +103,7 @@ const Navbar = () => {
                     {rol === 1 && (
                         <>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/citas-espera">Citas en Espera</Link>
+                                <Link className="nav-link" to="/citas_espera">Citas en Espera</Link>
                             </li>
 
                             <li className="nav-item dropdown">
@@ -122,13 +122,13 @@ const Navbar = () => {
                                         <Link className="dropdown-item" to="">Departamento</Link>
                                     </li>
                                     <li>
-                                        <Link className="dropdown-item" to="">Categorias</Link>
+                                        <Link className="dropdown-item" to="/categorias">Categorias</Link>
                                     </li>
                                     <li>
                                         <Link className="dropdown-item" to="/doctores">Doctores</Link>
                                     </li>
                                     <li>
-                                        <Link className="dropdown-item" to="">Usuarios</Link>
+                                        <Link className="dropdown-item" to="/list_usuarios">Usuarios</Link>
                                     </li>
                                 </ul>
                             </li>
@@ -146,10 +146,10 @@ const Navbar = () => {
                                 </a>
                                 <ul className="dropdown-menu" aria-labelledby="auditoriasDropdown">
                                     <li>
-                                        <Link className="dropdown-item" to="">Citas</Link>
+                                        <Link className="dropdown-item" to="/aud_citas">Citas</Link>
                                     </li>
                                     <li>
-                                        <Link className="dropdown-item" to="">Doctores</Link>
+                                        <Link className="dropdown-item" to="/aud_doctores">Doctores</Link>
                                     </li>
                                 </ul>
                             </li>
@@ -166,7 +166,7 @@ const Navbar = () => {
                     {rol === 2 && (
                         <>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/citas-aceptadas">Citas Aceptadas</Link>
+                                <Link className="nav-link" to="/citas_aceptada">Citas Aceptadas</Link>
                             </li>
 
                             <li className="nav-item dropdown">
@@ -178,7 +178,7 @@ const Navbar = () => {
                                     data-bs-toggle="dropdown"
                                     aria-expanded="false"
                                 >
-                                    Administracion
+                                    Perfil
                                 </a>
                                 <ul className="dropdown-menu" aria-labelledby="perfilDropdown">
                                     <li className="nav-item">

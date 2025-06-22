@@ -3,8 +3,10 @@
   position: fixed;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+    overflow-x: hidden;
+
   z-index: 0;
+  
 }
 
 .background-image-form {
@@ -15,6 +17,8 @@
   top: 0;
   left: 0;
   z-index: 0;
+  overflow-x: hidden;
+  
 }
 
 /* Capa oscura */
@@ -26,6 +30,8 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 1;
+  overflow-x: hidden;
+
 }
 
 /* Navbar: POR ENCIMA DE TODO */
@@ -35,6 +41,7 @@
   left: 0;
   width: 100%;
   z-index: 100;
+  
 }
 
 /* Contenedor principal */
@@ -43,7 +50,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  width: 100vw;
+  width: 98.9vw;
   overflow-x: hidden;
   position: relative;
   z-index: 10;
@@ -54,6 +61,8 @@
   flex: 1;
   z-index: 10;
   position: relative;
+  overflow-x: hidden;
+
 }
 
 .style-form {
@@ -65,4 +74,6 @@
   background-color: white;
   position: relative;
   z-index: 10;
+  overflow-x: hidden;
+
 }
