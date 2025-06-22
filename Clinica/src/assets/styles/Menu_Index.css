@@ -1,0 +1,162 @@
+/* Estilos generales */
+.landing-body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  overflow-x: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Hero */
+.landing-hero {
+  background-color: #3b82f6;
+  padding-top: 5rem;
+  position: relative;
+  overflow: hidden;
+  color: white;
+}
+
+.landing-hero-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.landing-hero-text h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.landing-hero-text p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.landing-btn-light {
+  background-color: #e6d7c7;
+  color: #3b82f6;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.landing-btn-light:hover {
+  background-color: #d4c3b3;
+}
+
+/* Dot navigation */
+.landing-dots {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.75rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  opacity: 0.4;
+  border-radius: 9999px;
+}
+
+.dot.active {
+  opacity: 0.8;
+}
+
+/* Wave SVG */
+.landing-wave {
+  width: 100%;
+  margin-bottom: -1px;
+}
+
+/* Secciones */
+.landing-section {
+  text-align: center;
+  padding: 4rem 1.5rem;
+}
+
+.landing-section h2 {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.landing-description {
+  font-size: 0.9rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+}
+
+/* Cards */
+.landing-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.landing-card {
+  background: transparent;
+  text-align: center;
+}
+
+.landing-icon {
+  width: 64px;
+  height: 64px;
+  background-color: #3b82f6;
+  color: white;
+  font-size: 1.5rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+/* Botones */
+.landing-btn-primary {
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.5rem 2rem;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.landing-btn-primary:hover {
+  background-color: #2563eb;
+}
+
+/* Sobre Nosotros */
+.landing-about {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+}
+
+.landing-about-img img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.landing-about-text {
+  max-width: 600px;
+}
