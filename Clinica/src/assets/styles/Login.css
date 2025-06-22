@@ -7,20 +7,9 @@
     z-index: 2;
 }
 
-.capaL {
-      background-color: rgba(0, 0, 0, 0.2);
-      z-index: 0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-  }
-
 .left-panel,
 .right-panel {
     flex: 1;
-    /* Ambos ocupan 50% */
     height: 100%;
     width: 100%;
 }

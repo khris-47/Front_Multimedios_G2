@@ -34,7 +34,6 @@ export const crearUsuario = async (usuario) => {
     return response.data;
 };
 
-
 // Put de usuarios
 export const actualizarUsuario = async (id, data) => {
     try {
@@ -54,5 +53,3 @@ export const eliminarUsuario = async (id) => {
     throw new Error(error.response?.data?.error || 'Error al eliminar usuario');
   }
 };
-
-

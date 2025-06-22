@@ -68,47 +68,126 @@ const Navbar = () => {
             <div className="collapse navbar-collapse" id="navbarContent">
                 <ul className="navbar-nav ms-auto">
 
-
+                    {/* Paciente */}
                     {rol === 3 && (
                         <>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/pedir-cita">Cita</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/perfil">Perfil</Link>
+
+                            <li className="nav-item dropdown">
+                                <a
+                                    className="nav-link dropdown-toggle"
+                                    href="#"
+                                    id="perfilDropdown"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                >
+                                    Administracion
+                                </a>
+                                <ul className="dropdown-menu" aria-labelledby="perfilDropdown">
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/perfil">Mi Perfil</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <button className="nav-link btn btn-link" onClick={handleLogout}>Cerrar Sesión</button>
+                                    </li>
+                                </ul>
                             </li>
-                            <li className="nav-item">
-                                <button className="nav-link btn btn-link" onClick={handleLogout}>Cerrar Sesión</button>
-                            </li>
+
                         </>
                     )}
 
+                    {/* Admin / secretaria */}
                     {rol === 1 && (
                         <>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/citas-espera">Citas en Espera</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/listas">Listas</Link>
+
+                            <li className="nav-item dropdown">
+                                <a
+                                    className="nav-link dropdown-toggle"
+                                    href="#"
+                                    id="administracionDropdown"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                >
+                                    Administracion
+                                </a>
+                                <ul className="dropdown-menu" aria-labelledby="administracionDropdown">
+                                    <li>
+                                        <Link className="dropdown-item" to="">Departamento</Link>
+                                    </li>
+                                    <li>
+                                        <Link className="dropdown-item" to="">Categorias</Link>
+                                    </li>
+                                    <li>
+                                        <Link className="dropdown-item" to="/doctores">Doctores</Link>
+                                    </li>
+                                    <li>
+                                        <Link className="dropdown-item" to="">Usuarios</Link>
+                                    </li>
+                                </ul>
                             </li>
+
+                            <li className="nav-item dropdown">
+                                <a
+                                    className="nav-link dropdown-toggle"
+                                    href="#"
+                                    id="auditoriasDropdown"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                >
+                                    Auditorías
+                                </a>
+                                <ul className="dropdown-menu" aria-labelledby="auditoriasDropdown">
+                                    <li>
+                                        <Link className="dropdown-item" to="">Citas</Link>
+                                    </li>
+                                    <li>
+                                        <Link className="dropdown-item" to="">Doctores</Link>
+                                    </li>
+                                </ul>
+                            </li>
+
                             <li className="nav-item">
                                 <button className="nav-link btn btn-link" onClick={handleLogout}>Cerrar Sesión</button>
                             </li>
+
+
                         </>
                     )}
 
+                    {/* Doctor */}
                     {rol === 2 && (
                         <>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/citas-aceptadas">Citas Aceptadas</Link>
                             </li>
 
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/historial">Perfil</Link>
-                            </li>
-
-                            <li className="nav-item">
-                                <button className="nav-link btn btn-link" onClick={handleLogout}>Cerrar Sesión</button>
+                            <li className="nav-item dropdown">
+                                <a
+                                    className="nav-link dropdown-toggle"
+                                    href="#"
+                                    id="perfilDropdown"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                >
+                                    Administracion
+                                </a>
+                                <ul className="dropdown-menu" aria-labelledby="perfilDropdown">
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/perfil">Mi Perfil</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <button className="nav-link btn btn-link" onClick={handleLogout}>Cerrar Sesión</button>
+                                    </li>
+                                </ul>
                             </li>
                         </>
                     )}

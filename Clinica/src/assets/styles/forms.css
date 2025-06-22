@@ -1,0 +1,68 @@
+/* Fondo */
+.background-container-form {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.background-image-form {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* Capa oscura */
+.capaForms {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+/* Navbar: POR ENCIMA DE TODO */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+/* Contenedor principal */
+.bodyForm {
+  font-family: 'Winky Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 10;
+}
+
+/* Contenido principal (formulario) */
+.mainForm {
+  flex: 1;
+  z-index: 10;
+  position: relative;
+}
+
+.style-form {
+  max-width: 85%;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  position: relative;
+  z-index: 10;
+}
