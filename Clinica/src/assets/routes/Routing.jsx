@@ -6,6 +6,7 @@ import Login from '../pages/principales/Login'
 import Mi_perfil from '../pages/principales/Mi_perfil'
 import Doctores from '../pages/registros/Doctores'
 import Categorias from '../pages/registros/Categorias'
+import Departamentos from '../pages/registros/Departamentos'
 import Lista_Usuarios from '../pages/registros/Lista_Usuarios'
 import Auditoria_Citas from '../pages/registros/Auditoria_Citas'
 import Auditoria_Doctores from '../pages/registros/Auditoria_Doctores'
@@ -23,6 +24,7 @@ function Routing() {
                     <Route path='/perfil' element={<Mi_perfil/>}></Route>
                     <Route path='/doctores' element={<Doctores/>}></Route>
                     <Route path='/categorias' element={<Categorias/>}></Route>
+                    <Route path='/departamentos' element={<Departamentos/>}></Route>
                     <Route path='/list_usuarios' element={<Lista_Usuarios/>}></Route>
                     <Route path='/aud_citas' element={<Auditoria_Citas/>}></Route>
                     <Route path='/aud_doctores' element={<Auditoria_Doctores/>}></Route>

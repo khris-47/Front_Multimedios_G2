@@ -119,7 +119,7 @@ const Navbar = () => {
                                 </a>
                                 <ul className="dropdown-menu" aria-labelledby="administracionDropdown">
                                     <li>
-                                        <Link className="dropdown-item" to="">Departamento</Link>
+                                        <Link className="dropdown-item" to="/departamentos">Departamento</Link>
                                     </li>
                                     <li>
                                         <Link className="dropdown-item" to="/categorias">Categorias</Link>
