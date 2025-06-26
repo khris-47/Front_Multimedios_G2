@@ -12,6 +12,7 @@ import Auditoria_Citas from '../pages/registros/Auditoria_Citas'
 import Auditoria_Doctores from '../pages/registros/Auditoria_Doctores'
 import Citas_Espera from '../pages/registros/Citas_Espera'
 import Citas_Aceptadas from '../pages/registros/Citas_Aceptadas'
+import Citas_Usuario from '../pages/registros/Citas_Usuario'
 
 
 function Routing() {
@@ -30,6 +31,8 @@ function Routing() {
                     <Route path='/aud_doctores' element={<Auditoria_Doctores/>}></Route>
                     <Route path='/citas_espera' element={<Citas_Espera/>}></Route>
                     <Route path='/citas_aceptada' element={<Citas_Aceptadas/>}></Route>
+                    <Route path='/citas_usuario' element={<Citas_Usuario/>}></Route>
+                    <Route path='/pedir-cita' element={<Citas_Usuario />} />
 
             </Routes>
         </Router>
