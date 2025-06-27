@@ -37,7 +37,13 @@ function Login_Content() {
 
                 usuario = await autenticarDoctor(email, password);
 
+                // Validar estado
+                if (usuario.estado !== 'activo') {
+                    throw new Error('El usuario no está activo. Contacta con el administrador.');
+                }
             }
+
+
 
             Swal.fire('Bienvenido', `Hola, ${usuario.nombre}`, 'success');
 

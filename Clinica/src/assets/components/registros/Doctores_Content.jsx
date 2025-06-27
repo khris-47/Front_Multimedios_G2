@@ -67,7 +67,7 @@ function Doctores() {
             await Doctores_Services.actualizarDoctor(editId, doctorActualizado);
             Swal.fire('¡Éxito!', 'Doctor actualizado correctamente.', 'success');
             setShowModal(false);
-            Doctores_Services.obtenerDoctores(); // refresca la tabla
+             cargarDoctores();
         } catch (error) {
             console.error("Error al actualizar doctor:", error);
             Swal.fire('Error', 'No se pudo actualizar el doctor.', 'error');
@@ -93,6 +93,7 @@ function Doctores() {
         } catch (err) {
             console.error('Error al registrar doctor:', err);
             Swal.fire('Error', 'No se pudo registrar el doctor', 'error');
+             cargarDoctores();
         }
     };
 
@@ -196,7 +197,7 @@ function Doctores() {
                                     ) : error ? (
                                         <div className="alert alert-danger">{error}</div>
                                     ) : (
-                                        <table className='table table-striped'>
+                                        <table className='table table-striped mt-2'>
                                             <thead className='table-dark'>
                                                 <tr>
                                                     <th>ID</th>
@@ -204,6 +205,7 @@ function Doctores() {
                                                     <th>Teléfono</th>
                                                     <th>Email</th>
                                                     <th>Departamento</th>
+                                                    <th>Categorias</th>
                                                     <th>Estado</th>
                                                     <th>Acciones</th>
                                                 </tr>
@@ -216,6 +218,11 @@ function Doctores() {
                                                         <td>{doc.telefono}</td>
                                                         <td>{doc.email}</td>
                                                         <td>{doc.departamento_id}</td>
+                                                        <td>
+                                                            {doc.categorias && doc.categorias.length > 0
+                                                                ? doc.categorias.map((cat) => cat.nombre).join(', ')
+                                                                : 'Sin asignar'}
+                                                        </td>
                                                         <td>{doc.estado}</td>
                                                         <td>
                                                             {doc.estado === 'activo' ? (

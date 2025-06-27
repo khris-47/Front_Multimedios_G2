@@ -69,24 +69,54 @@ function Categorias_Content() {
 
     const handleDelete = (id) => {
         Swal.fire({
-            title: '¿Eliminar categoría?',
+            title: 'Desactivar categoría?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
             cancelButtonText: 'Cancelar',
-            confirmButtonText: 'Sí, eliminar'
+            confirmButtonText: 'Sí, desactivar'
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
                     await CategoriaService.eliminarCategoria(id);
-                    Swal.fire('Eliminado', 'Categoría eliminada correctamente', 'success');
+                    Swal.fire('desactivada', 'Categoría desactivada correctamente', 'success');
                     cargarCategorias();
                 } catch {
-                    Swal.fire('Error', 'No se pudo eliminar la categoría', 'error');
+                    Swal.fire('Error', 'No se pudo desactiver la categoría', 'error');
                 }
             }
         });
     };
+
+    const handleActivate = async (id) => {
+        Swal.fire({
+            title: '¿Deseas activar esta categoría?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, activar',
+            cancelButtonText: 'Cancelar',
+            confirmButtonColor: '#3085d6',
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const categoria = categorias.find(cat => cat.id === id);
+                    if (!categoria) return;
+
+                    await CategoriaService.actualizarCategoria(id, {
+                        nombre: categoria.nombre, 
+                        estado: 'activo'
+                    });
+
+                    Swal.fire('Activada', 'La categoría fue activada correctamente', 'success');
+                    cargarCategorias();
+                } catch (error) {
+                    console.error("Error al activar categoría:", error);
+                    Swal.fire('Error', 'No se pudo activar la categoría', 'error');
+                }
+            }
+        });
+    };
+
 
     return (
         <div className='bodyForm'>
@@ -128,11 +158,12 @@ function Categorias_Content() {
                                     ) : error ? (
                                         <div className="alert alert-danger">{error}</div>
                                     ) : (
-                                        <table className='table table-striped'>
+                                        <table className='table table-striped mt-2'>
                                             <thead className='table-dark'>
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Nombre</th>
+                                                    <th>Estado</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>
@@ -141,10 +172,27 @@ function Categorias_Content() {
                                                     <tr key={cat.id}>
                                                         <td>{cat.id}</td>
                                                         <td>{cat.nombre}</td>
+                                                        <td>{cat.estado}</td>
                                                         <td>
-                                                            <a className='btn btn-dark bx bx-edit' onClick={() => handleEdit(cat)} />
-                                                            ||
-                                                            <a className='btn btn-danger bx bx-trash' onClick={() => handleDelete(cat.id)} />
+                                                            {cat.estado === 'activo' ? (
+                                                                <>
+                                                                    <a
+                                                                        className="btn btn-dark bx bx-edit"
+                                                                        onClick={() => handleEdit(cat)}
+                                                                    />
+                                                                    {' || '}
+                                                                    <a
+                                                                        className="btn btn-danger bx bx-trash"
+                                                                        onClick={() => handleDelete(cat.id)}
+                                                                    />
+                                                                </>
+                                                            ) : (
+                                                                <a
+                                                                    className="btn btn-primary bx bx-check"
+                                                                    onClick={() => handleActivate(cat.id)}
+                                                                    title="Activar doctor"
+                                                                />
+                                                            )}
                                                         </td>
                                                     </tr>
                                                 ))}

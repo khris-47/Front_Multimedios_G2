@@ -24,14 +24,14 @@ export const crearCategoria = async (categoria) => {
 
 export const actualizarCategoria = async (id, categoria) => {
   try {
-    const payload = { nombre: categoria.nombre };
-    const res = await axios.put(`${API_URL}?id=${id}`, payload);
+    const res = await axios.put(`${API_URL}?id=${id}`, categoria);
     return res.data;
   } catch (error) {
     console.error('actualizarCategoria:', error);
     throw error;
   }
 };
+
 
 export const eliminarCategoria = async (id) => {
   try {
