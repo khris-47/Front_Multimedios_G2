@@ -42,6 +42,7 @@ function Login_Content() {
             Swal.fire('Bienvenido', `Hola, ${usuario.nombre}`, 'success');
 
             Cookies.set('user', JSON.stringify(usuario), { expires: 1 });
+            localStorage.setItem('usuario', JSON.stringify(usuario)); //lo necesito para la compra de medicamentos
 
 
             navigate('/');
