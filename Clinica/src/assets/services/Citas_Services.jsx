@@ -38,3 +38,14 @@ export const obtenerCitasAceptadas = async () => {
   }
 };
 
+export const obtenerCitasPorPaciente = async (paciente_id) => {
+  try {
+    const res = await axios.get(`${API_URL}?paciente_id=${paciente_id}`);
+    return res.data; // debe retornar las citas de ese paciente
+  } catch (error) {
+    console.error('obtenerCitasPorPaciente:', error);
+    throw error;
+  }
+};
+
+

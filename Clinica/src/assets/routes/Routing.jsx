@@ -13,7 +13,7 @@ import Auditoria_Doctores from '../pages/registros/Auditoria_Doctores'
 import Citas_Espera from '../pages/registros/Citas_Espera'
 import Citas_Aceptadas from '../pages/registros/Citas_Aceptadas'
 import Citas_Usuario from '../pages/registros/Citas_Usuario'
-
+import Historial_Usuario from '../pages/registros/Historial_Usuario'
 
 function Routing() {
     return (
@@ -33,7 +33,8 @@ function Routing() {
                     <Route path='/citas_aceptada' element={<Citas_Aceptadas/>}></Route>
                     <Route path='/citas_usuario' element={<Citas_Usuario/>}></Route>
                     <Route path='/pedir-cita' element={<Citas_Usuario />} />
-
+                    <Route path='/revisar_historial' element={<Historial_Usuario/>}></Route>
+        
             </Routes>
         </Router>
     )

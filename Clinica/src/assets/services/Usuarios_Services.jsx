@@ -53,3 +53,18 @@ export const eliminarUsuario = async (id) => {
     throw new Error(error.response?.data?.error || 'Error al eliminar usuario');
   }
 };
+
+export const obtenerPacientes = async () => {
+  try {
+    const response = await axios.get('http://localhost/Proyecto_Grupal_Multimedios/api/ApiUsuarios.php');
+    // Pacientes tienen id_rol = 3
+    return response.data.filter(usuario => usuario.id_rol === 3);
+  } catch (error) {
+    console.error('Error al obtener pacientes:', error);
+    return [];
+  }
+};
+
+
+
+

@@ -169,6 +169,10 @@ const Navbar = () => {
                                 <Link className="nav-link" to="/citas_aceptada">Citas Aceptadas</Link>
                             </li>
 
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/revisar_historial">Historial Paciente</Link>
+                            </li>
+
                             <li className="nav-item dropdown">
                                 <a
                                     className="nav-link dropdown-toggle"
