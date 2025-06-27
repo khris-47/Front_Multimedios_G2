@@ -98,27 +98,7 @@ function Perfil_Content() {
         }
     };
 
-    const handleEliminar = async () => {
-        const result = await Swal.fire({
-            title: '¿Estás seguro?',
-            text: "¡No podrás revertir esta acción!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Sí, eliminar',
-            cancelButtonText: 'Cancelar',
-        });
-
-        if (result.isConfirmed) {
-            try {
-                await UsuarioService.eliminarUsuario(userId);
-                Swal.fire('Eliminado', 'Tu perfil ha sido eliminado.', 'success');
-                Cookies.remove('user');
-                navigate('/')
-            } catch (error) {
-                Swal.fire('Error', error.message, 'error');
-            }
-        }
-    };
+    
 
     return (
         <div className="bodyForm">
@@ -148,13 +128,6 @@ function Perfil_Content() {
                         >
                             Editar
                         </button>
-
-
-                        {userId !== 1 && (
-                            <button className="btn btn-danger mt-3 m-1" onClick={handleEliminar}>
-                                Eliminar Perfil
-                            </button>
-                        )}
 
                     </div>
                 </div>

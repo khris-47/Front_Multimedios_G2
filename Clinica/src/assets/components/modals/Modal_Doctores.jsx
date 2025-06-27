@@ -104,7 +104,7 @@ function Modal_Doctores({
     try {
       setError('');
       // Envía el formData al componente padre
-      onSubmit();
+      onSubmit(formData);
       onHide();
     } catch (error) {
       console.error('Error en Modal:', error);
@@ -193,20 +193,23 @@ function Modal_Doctores({
               <Col>
                 <Form.Label>Categorías:</Form.Label>
                 <div className="d-flex flex-wrap">
-                  {categorias.map(cat => (
-                    <Form.Check
-                      key={cat.id}
-                      type="checkbox"
-                      label={cat.nombre}
-                      checked={formData.categorias?.includes(cat.id) || false}
-                      onChange={() => handleCheckboxChange(cat.id)}
-                      className="me-3"
-                    />
-                  ))}
+                  {categorias
+                    .filter(cat => cat.estado === 'activo')  
+                    .map(cat => (
+                      <Form.Check
+                        key={cat.id}
+                        type="checkbox"
+                        label={cat.nombre}
+                        checked={formData.categorias?.includes(cat.id) || false}
+                        onChange={() => handleCheckboxChange(cat.id)}
+                        className="me-3"
+                      />
+                    ))}
                 </div>
               </Col>
             </Row>
           )}
+
 
 
 
@@ -219,6 +222,7 @@ function Modal_Doctores({
       </Modal.Body>
     </Modal>
   );
+
 }
 
 export default Modal_Doctores;

@@ -37,11 +37,18 @@ function Login_Content() {
 
                 usuario = await autenticarDoctor(email, password);
 
+                // Validar estado
+                if (usuario.estado !== 'activo') {
+                    throw new Error('El usuario no está activo. Contacta con el administrador.');
+                }
             }
+
+
 
             Swal.fire('Bienvenido', `Hola, ${usuario.nombre}`, 'success');
 
             Cookies.set('user', JSON.stringify(usuario), { expires: 1 });
+            localStorage.setItem('usuario', JSON.stringify(usuario)); //lo necesito para la compra de medicamentos
 
 
             navigate('/');

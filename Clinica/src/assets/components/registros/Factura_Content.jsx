@@ -1,27 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import Navbar from '../navegacion/Navbar_Content';
+import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
+import '../../styles/forms.css';
 import Fondo from '/img/fondo_forms.jpg';
-import { obtenerAuditoriasCitas } from '../../services/Auditorias_Services';
+import Navbar from '../navegacion/Navbar_Content';
+import * as FacturaService from '../../services/Factura_Services';
 
-function AuditoriaCitas_Content() {
-  const [auditorias, setAuditorias] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+function Factura_Content() {
+  const [facturas, setFacturas] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const cargarAuditorias = async () => {
+  const cargarFacturas = async () => {
     try {
-      const data = await obtenerAuditoriasCitas();
-      setAuditorias(data);
+      setLoading(true);
+      const data = await FacturaService.obtenerFacturas();
+      setFacturas(data);
     } catch (err) {
-      console.error(err);
-      setError('Error al cargar auditorías');
+      console.error('Error cargando facturas:', err);
+      setError('No se pudieron cargar las facturas.');
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    cargarAuditorias();
+    cargarFacturas();
   }, []);
 
   return (
@@ -41,7 +44,7 @@ function AuditoriaCitas_Content() {
           <div className='container'>
             <div className='row justify-content-center align-items-center g-2'>
               <div className='col'>
-                <h1>Auditoría de Citas</h1>
+                <h1>Módulo de Facturas</h1>
               </div>
             </div>
 
@@ -56,26 +59,22 @@ function AuditoriaCitas_Content() {
                   ) : error ? (
                     <div className="alert alert-danger">{error}</div>
                   ) : (
-                    <table className='table table-striped'>
-                      <thead className='table-dark'>
+                    <table className='table'>
+                      <thead>
                         <tr>
                           <th>ID</th>
-                          <th>Cita ID</th>
-                          <th>Acción</th>
-                          <th>Realizada por</th>
-                          <th>Detalle</th>
                           <th>Fecha</th>
+                          <th>Total</th>
+                          <th>Usuario ID</th>
                         </tr>
                       </thead>
                       <tbody>
-                        {auditorias.map((item) => (
-                          <tr key={item.id}>
-                            <td>{item.id}</td>
-                            <td>{item.cita_id}</td>
-                            <td>{item.accion}</td>
-                            <td>{item.realizada_por}</td>
-                            <td>{item.detalle}</td>
-                            <td>{item.fecha}</td>
+                        {facturas.map(factura => (
+                          <tr key={factura.id}>
+                            <td>{factura.id}</td>
+                            <td>{factura.fecha}</td>
+                            <td>${parseFloat(factura.total).toFixed(2)}</td>
+                            <td>{factura.usuario_id}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -91,4 +90,4 @@ function AuditoriaCitas_Content() {
   );
 }
 
-export default AuditoriaCitas_Content;
+export default Factura_Content;

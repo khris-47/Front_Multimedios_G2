@@ -74,6 +74,9 @@ const Navbar = () => {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/pedir-cita">Solicitar cita</Link>
                             </li>
+                             <li className="nav-item">
+                                <Link className="nav-link" to="/compra_medicamentos">Comprar medicamentos</Link>
+                            </li>
 
                             <li className="nav-item dropdown">
                                 <a
@@ -129,6 +132,12 @@ const Navbar = () => {
                                     </li>
                                     <li>
                                         <Link className="dropdown-item" to="/list_usuarios">Usuarios</Link>
+                                    </li>
+                                    <li>
+                                        <Link className="dropdown-item" to="/medicamento">Medicamentos</Link>
+                                    </li>
+                                    <li>
+                                        <Link className="dropdown-item" to="/factura">Facturas</Link>
                                     </li>
                                 </ul>
                             </li>

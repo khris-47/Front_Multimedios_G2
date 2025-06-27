@@ -55,8 +55,8 @@ function CitasAceptadas_Content() {
                                     ) : error ? (
                                         <div className="alert alert-danger">{error}</div>
                                     ) : (
-                                        <table className='table'>
-                                            <thead>
+                                        <table className='table table-striped'>
+                                            <thead className='table-dark'>
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Paciente</th>
@@ -67,19 +67,24 @@ function CitasAceptadas_Content() {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {citas.map(cita => (
-                                                    <tr key={cita.id}>
-                                                        <td>{cita.id}</td>
-                                                        <td>{cita.paciente_id}</td>
-                                                        <td>{cita.doctor_id}</td>
-                                                        <td>{cita.fecha}</td>
-                                                        <td>{cita.estado}</td>
-
-                                                        <td>
-                                                            <a className="btn btn-primary bx bx-file" title="Ver detalles" ></a>
-                                                        </td>
+                                                {citas.length === 0 ? (
+                                                    <tr>
+                                                        <td colSpan="6" className="text-center">No hay citas aceptadas</td>
                                                     </tr>
-                                                ))}
+                                                ) : (
+                                                    citas.map(cita => (
+                                                        <tr key={cita.id}>
+                                                            <td>{cita.id}</td>
+                                                            <td>{cita.paciente_id}</td>
+                                                            <td>{cita.doctor_id}</td>
+                                                            <td>{cita.fecha}</td>
+                                                            <td>{cita.estado}</td>
+                                                            <td>
+                                                                <a className="btn btn-primary bx bx-file" title="Ver detalles" />
+                                                            </td>
+                                                        </tr>
+                                                    ))
+                                                )}
                                             </tbody>
                                         </table>
                                     )}
