@@ -72,7 +72,7 @@ const Navbar = () => {
                     {rol === 3 && (
                         <>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/pedir-cita">Cita</Link>
+                                <Link className="nav-link" to="/pedir-cita">Solicitar cita</Link>
                             </li>
                              <li className="nav-item">
                                 <Link className="nav-link" to="/compra_medicamentos">Comprar medicamentos</Link>
