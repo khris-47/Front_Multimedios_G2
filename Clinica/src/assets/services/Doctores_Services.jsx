@@ -29,24 +29,20 @@ export const obtenerDoctores = async () => {
 };
 
 // Post de doctores
-export const crearDoctor = async (doctor) => {
+export const crearDoctor = async (doctorData) => {
   try {
-    const response = await axios.post(API_URL, doctor);
+    const response = await axios.post(API_URL, doctorData, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
     return response.data;
   } catch (error) {
-    // Mostrar errores más útiles según el tipo
-    if (error.response) {
-      console.error('❌ Error en respuesta del servidor:', error.response.data);
-      throw new Error(error.response.data?.error || 'Error desconocido del servidor');
-    } else if (error.request) {
-      console.error('❌ No se recibió respuesta del servidor');
-      throw new Error('No se recibió respuesta del servidor');
-    } else {
-      console.error('❌ Error al hacer la solicitud:', error.message);
-      throw new Error('Error al hacer la solicitud');
-    }
+    console.error("Error en respuesta del servidor:", error.response?.data || error.message);
+    throw error;
   }
 };
+
 
 // Put de doctores
 export const actualizarDoctor = async (id, doctor) => {

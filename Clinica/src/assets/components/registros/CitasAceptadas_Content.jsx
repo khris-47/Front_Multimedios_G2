@@ -55,8 +55,8 @@ function CitasAceptadas_Content() {
                                     ) : error ? (
                                         <div className="alert alert-danger">{error}</div>
                                     ) : (
-                                        <table className='table'>
-                                            <thead>
+                                        <table className='table table-striped'>
+                                            <thead className='table-dark'>
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Paciente</th>

@@ -77,6 +77,7 @@ function Doctores() {
     const handleRegister = async (formData) => {
         try {
             // 1. Crear doctor
+            console.log('Datos que se envían al servidor:', JSON.stringify(formData));
             const response = await Doctores_Services.crearDoctor(formData);
             const doctorId = response.id;
 
@@ -98,7 +99,7 @@ function Doctores() {
     const handleDelete = (id) => {
         Swal.fire({
             title: '¿Estás seguro?',
-            text: "¡No podrás revertir esta acción!",
+            text: "¡Esto desactivara el Doctor!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
@@ -117,13 +118,41 @@ function Doctores() {
     const eliminarDoctor = async (id) => {
         try {
             await Doctores_Services.eliminarDoctor(id); // llama al servicio que hace el DELETE
-            Swal.fire('Eliminado', 'El doctor fue eliminado correctamente.', 'success');
+            Swal.fire('Eliminado', 'El doctor fue desactivado correctamente.', 'success');
             // Recargás la lista o actualizás estado para reflejar el cambio
             cargarDoctores(); // por ejemplo
         } catch (error) {
             Swal.fire('Error', 'No se pudo eliminar el doctor.', 'error');
         }
     };
+
+
+    const activarDoctor = async (id) => {
+        try {
+            await Doctores_Services.actualizarDoctor(id, { estado: 'activo' });
+            Swal.fire('Activado', 'El doctor fue activado correctamente.', 'success');
+            cargarDoctores(); // refrescar lista
+        } catch (error) {
+            console.error("Error al activar doctor:", error);
+            Swal.fire('Error', 'No se pudo activar el doctor.', 'error');
+        }
+    };
+
+    const handleActivate = (id) => {
+        Swal.fire({
+            title: '¿Deseas activar este doctor?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, activar',
+            cancelButtonText: 'Cancelar',
+            confirmButtonColor: '#3085d6',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                activarDoctor(id);
+            }
+        });
+    };
+
 
     return (
         <div className='bodyForm'>
@@ -167,14 +196,15 @@ function Doctores() {
                                     ) : error ? (
                                         <div className="alert alert-danger">{error}</div>
                                     ) : (
-                                        <table className='table'>
-                                            <thead>
+                                        <table className='table table-striped'>
+                                            <thead className='table-dark'>
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Nombre</th>
                                                     <th>Teléfono</th>
                                                     <th>Email</th>
                                                     <th>Departamento</th>
+                                                    <th>Estado</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>
@@ -186,10 +216,27 @@ function Doctores() {
                                                         <td>{doc.telefono}</td>
                                                         <td>{doc.email}</td>
                                                         <td>{doc.departamento_id}</td>
+                                                        <td>{doc.estado}</td>
                                                         <td>
-                                                            <a className='btn btn-dark bx bx-edit' onClick={() => handleEdit(doc)} />
-                                                            ||
-                                                            <a className='btn btn-danger bx bx-trash' onClick={() => handleDelete(doc.id)} />
+                                                            {doc.estado === 'activo' ? (
+                                                                <>
+                                                                    <a
+                                                                        className="btn btn-dark bx bx-edit"
+                                                                        onClick={() => handleEdit(doc)}
+                                                                    />
+                                                                    {' || '}
+                                                                    <a
+                                                                        className="btn btn-danger bx bx-trash"
+                                                                        onClick={() => handleDelete(doc.id)}
+                                                                    />
+                                                                </>
+                                                            ) : (
+                                                                <a
+                                                                    className="btn btn-primary bx bx-check"
+                                                                    onClick={() => handleActivate(doc.id)}
+                                                                    title="Activar doctor"
+                                                                />
+                                                            )}
                                                         </td>
                                                     </tr>
                                                 ))}

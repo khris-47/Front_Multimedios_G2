@@ -104,7 +104,7 @@ function Modal_Doctores({
     try {
       setError('');
       // Envía el formData al componente padre
-      onSubmit();
+      onSubmit(formData);
       onHide();
     } catch (error) {
       console.error('Error en Modal:', error);
